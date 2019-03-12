@@ -1,0 +1,179 @@
+<!-- CSS goes in the document HEAD or added to your external stylesheet -->
+<html style="height: 100%">
+ <head>
+  <meta charset="utf-8" http-equiv="refresh" content="3"/>
+  <style type="text/css">
+      body{
+    background-image: url('../static/images/perform.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    }
+      table.hovertable {
+    font-family: verdana,arial,sans-serif;
+    font-size:11px;
+    color:#333333;
+    border-width: 1px;
+    border-color: #999999;
+    border-collapse: collapse;
+          float: center;
+          margin-left: 400px;
+    }
+    table.hovertable th {
+    background-color:#00BFFF;
+    border-width: 2px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #a9c6c9;
+    }
+    table.hovertable tr {
+    background-color:#d4e3e5;
+    }
+    table.hovertable td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #a9c6c9;
+    }
+      .first_div{
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+    color: mediumslateblue;
+}
+      .second_div{
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin-top: 60px;
+    margin-left: -100px;
+    color: mediumslateblue;
+}
+      .third_div{
+    float: left;
+    width: 310px;
+    height: 100px;
+    margin-top: 100px;
+    margin-left: -100px;
+    color: mediumslateblue;
+}
+      .forth_div{
+    float: left;
+    width: 310px;
+    height: 100px;
+    margin-top: 280px;
+    margin-left: -300px;
+    color: mediumslateblue;
+}
+  </style>
+ </head>
+ <body style="height: 100%; margin: 0">
+    <div class="first_div">
+    <a href="javascript:location.reload();">
+        <input type="button" value="点击重新获取数据" style="width:140px;height:30px;font-weight:bold">
+    </a>
+</div>
+    <div class="second_div">
+        <form action="/pagetest/">
+            <input type="submit" value="返回首页" style="width:140px;height:30px;font-weight:bold">
+        </form>
+    </div>
+    <div class="third_div">
+        <h4 style="color: magenta">列表颜色说明：</h4>
+        <ul style="list-style-type:disc">
+            <li><h4><p style="color:red;">红色 表示 <u>网络不通</u></p></h4></li>
+            <li><h4><p style="color:MediumOrchid;">紫色 表示 <u>响应时间超过后台设置阈值</u></p></h4></li>
+            <li><h4><p style="color:#d4e3e5;">淡蓝 表示 <u>正常</u></p></h4></li>
+        </ul>
+    </div>
+    <div class="forth_div">
+        <h4 style="color: #79fffa">注：页面 <u style="color:red;">3</u> 秒自动刷新一次</h4>
+    </div>
+    <!--post结果表-->
+    {% if post_error or post_warning or post_right %}
+        <table class="hovertable" style="height: 80px;width: 650px;border: 1" align='center'>
+        <tr>
+             <th style="font-size:15px">&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;POST接口名称&emsp;&emsp;&nbsp;&nbsp;&nbsp;&thinsp;&thinsp;</th>
+             <th style="font-size:15px">响应时间（ms）</th>
+             <th style="font-size:15px">HTTP状态码</th>
+        </tr>
+        {% for k,e_value in post_error.items %}
+            <tr onmouseover="this.style.backgroundColor='#DC143C';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+                <td bgcolor="Crimson">{{ k }}</td>
+                {% for e in e_value %}
+                    <td>{{ e }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+
+        {% for k,w_value in post_warning.items %}
+            <tr onmouseover="this.style.backgroundColor='#BA55D3';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+                <td bgcolor="MediumOrchid">{{ k }}</td>
+                {% for w in w_value %}
+                    <td>{{ w }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+
+        {% for k,r_value in post_right.items %}
+            <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+                <td >{{ k }}</td>
+                {% for r in r_value %}
+                    <td>{{ r }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    <!--get结果表-->
+    {% if get_error or get_warning or get_right %}
+    <table class="hovertable" style="height: 100px;width: 650px;border: 1" align='center'>
+        <tr>
+             <th style="font-size:15px">IP地址</th>
+             <th style="font-size:15px">栏目路径</th>
+             <th style="font-size:15px">响应时间（ms）</th>
+             <th style="font-size:15px">HTTP状态码</th>
+        </tr>
+    <!-- {('125.210.126.234','马鞍山-首页'):(34.864,200)} -->
+        {% for k_key,e_value in get_error.items %}
+            <tr onmouseover="this.style.backgroundColor='#DC143C';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+{#                <td bgcolor="red">{{ k }}</td>#}
+                {% for k in k_key %}
+                    <td bgcolor="Crimson">{{ k }}</td>
+                {% endfor %}
+                {% for e in e_value %}
+                    <td>{{ e }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+
+        {% for k_key,w_value in get_warning.items %}
+            <tr onmouseover="this.style.backgroundColor='#BA55D3';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+{#                <td bgcolor="MediumOrchid">{{ k }}</td>#}
+                {% for k in k_key %}
+                    <td bgcolor="MediumOrchid">{{ k }}</td>
+                {% endfor %}
+                {% for w in w_value %}
+                    <td>{{ w }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+
+        {% for k_key,r_value in get_right.items %}
+            <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+{#                <td >{{ k }}</td>#}
+                {% for k in k_key %}
+                    <td>{{ k }}</td>
+                {% endfor %}
+                {% for r in r_value %}
+                    <td>{{ r }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+ </body>
+</html>

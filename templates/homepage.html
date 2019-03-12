@@ -1,0 +1,55 @@
+<html>
+<head>
+    <title>homepage</title>
+    <style type="text/css">
+    body{
+        background-image: url('../static/images/home.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+    }
+    .firstdiv{
+        width: 100px;
+        height: 100px;
+        margin: 150px 200px 300px 500px;
+        color: mediumslateblue;
+    }
+    .seconddiv{
+    width: 300px;
+    height: 200px;
+    margin: -400px 400px 300px 645px;
+}
+    .thirddiv{
+    width: 300px;
+    height: 200px;
+    margin: -450px 100px 100px 500px;
+}
+
+    </style>
+
+</head>
+<body>
+
+
+<form action="/summary" >
+<div class="firstdiv" align="center">
+    <select name="area" style="width:250px;height:40px;font-size:18px;">
+        {% for foo in region_name %}
+            <option value={{ foo }}>{{ foo }}</option>
+        {% empty %}
+            <h1>No data！请先登录后台输入相关数据！</h1>
+        {% endfor %}
+    </select>
+</div>
+<div class="seconddiv" align="center">
+    <input type="submit" value="确定" style="width:80px;height:40;font-size:18px;font-weight:bold;">
+</div>
+</form>
+
+<div class="thirddiv" align="center">
+    <form action="/admin/pagetest/">
+        <input type="submit" value="登录管理界面" style="width:335px;height:30px;font-weight:bold;font-size:18px;">
+    </form>
+</div>
+</body>
+</html>
