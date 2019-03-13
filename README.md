@@ -35,8 +35,8 @@ urllib3==1.22 <br>
 $ nohup python manage.py runserver 125.210.162.45:8000 &
 ```
 
-#Screeshot
+# Examples
 
-![](http://s2.postimg.org/728c1wy4p/Screenshot_5.png)
+![](https://github.com/ccall248/UrlTestProd/blob/master/pagetest/static/images/backstage.png)
 
 ![](http://s30.postimg.org/fflxcv9ld/Screenshot_6.png)
