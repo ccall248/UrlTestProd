@@ -37,6 +37,14 @@ $ nohup python manage.py runserver 125.210.162.45:8000 &
 
 # Examples
 
-![](https://github.com/ccall248/UrlTestProd/blob/master/pagetest/static/images/backstage.png)
+The Backstage Pages: <br>
 
-![](http://s30.postimg.org/fflxcv9ld/Screenshot_6.png)
+![](https://github.com/ccall248/UrlTestProd/blob/master/pagetest/static/images/backstage.png) <br>
+![](https://github.com/ccall248/UrlTestProd/blob/master/pagetest/static/images/backstage_get.png) <br>
+![](https://github.com/ccall248/UrlTestProd/blob/master/pagetest/static/images/backstage_post.png) <br>
+![](https://github.com/ccall248/UrlTestProd/blob/master/pagetest/static/images/backstage_area.png) <br>
+
+The Front Pages: <br>
+
+![](https://github.com/ccall248/UrlTestProd/blob/master/pagetest/static/images/front_choose.png) <br>
+![](https://github.com/ccall248/UrlTestProd/blob/master/pagetest/static/images/front_result.png) <br>
