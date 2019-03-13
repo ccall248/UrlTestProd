@@ -32,7 +32,7 @@ urllib3==1.22 <br>
 # How To Start UrlTestProd
   
 ```bash
-$ nohup python manage.py runserver 125.210.162.45:8000 &
+$ nohup python manage.py runserver 127.0.0.1:8000 &
 ```
 
 # Examples
